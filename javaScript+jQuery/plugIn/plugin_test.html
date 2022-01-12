@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <style>
+        .slider-wrap{
+            max-width: 490px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.slider').bxSlider();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="slider-wrap">
+        <!--slider자체에 속성을 되도록이면 주지 않는다 -->
+        <ul class="slider">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
