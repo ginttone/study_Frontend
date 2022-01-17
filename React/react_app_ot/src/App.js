@@ -29,6 +29,7 @@ class App extends Component {
       _title = this.state.contents[0].title;
       _desc = this.state.contents[0].desc;
     }
+    console.log("render", this);
     return (
       <div className="App">
         {/* 2. Event 적용 후 Subject컴포넌트 사용 */}
@@ -42,12 +43,14 @@ class App extends Component {
             <a
               href="/"
               onClick={function (e) {
+                e.preventDefault();
+                return;
                 console.log(e);
                 e.preventDefault();
                 this.setState({
                   mode: "read",
                 });
-              }.bind(this)}
+              }}
             >
               {this.state.subject.title}
             </a>
