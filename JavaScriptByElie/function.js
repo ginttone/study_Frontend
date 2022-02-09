@@ -87,8 +87,6 @@ const printNo = function print() {
 randomQuiz("Wrong", printYes, printNo);
 randomQuiz("love u", printYes, printNo);
 
-console.log("----------------------------------");
-
 const simplePrint = function () {
   console.log("simplePrint!!");
 };
@@ -99,3 +97,26 @@ console.log(simplePrint);
 const add = function (a, b) {
   return a + b;
 };
+
+(function hello() {
+  console.log("IIFE");
+})();
+
+console.log("----------------------------------");
+function calculate(command, a, b) {
+  switch (command) {
+    case "add":
+      return a + b;
+    case "substract":
+      return a - b;
+    case "divide":
+      return a / b;
+    case "multiply":
+      return a * b;
+    case "remainder":
+      return a % b;
+    default:
+      throw Error("unknown command");
+  }
+}
+console.log(calculate("multiply", 2, 6));
