@@ -1,4 +1,15 @@
-"use strict";
+//Function 
+// - fundamental building block in the program
+// - subprogram can be used multiple times
+// - performs a task or calculates a value
+
+// 1. Function declaration
+// function name (param1, param2){body... return;}
+// on function === one thing
+// naming : doSomething, Command, verb
+// e.g. createCardAndPoint -> createCard, createPoint
+// function is object in JS
+"use strict"; // sloppy mode를 해제하고 명시적인 엄격모드 사용하는 방법
 
 function printHello() {
   console.log("Helllo");
