@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Document</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery.js"></script>
+    <!-- <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main.css"> -->
+    <!-- <script src="js/jquery.js"></script>
     <script src="js/jquery.bxslider.min.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> -->
 </head>
+
 <body>
-    
+    <script src="js/home.js"></script>
+
+    <h1>Hello Javascript</h1>
+    <input type="button" id="night-day" value="Night" onClick="dayNightHandler(this)" />
+
+    <script>
+        var coworkers = {
+            "programer": "Ginttone",
+            "designer": "Yuna"
+        }
+        coworkers.bookkeeper = "Yoon"
+        coworkers["data scientist"] = "Kyuhyun"
+
+        for (var key in coworkers) {
+            document.write('<div>' + coworkers[key] + '</div>');
+        }
+
+        coworkers.showAll = function () {
+            for (var key in this) {
+                document.write('<div>' + this[key] + '</div>');
+            }
+        }
+        coworkers.showAll();
+
+    </script>
 </body>
+
 </html>
