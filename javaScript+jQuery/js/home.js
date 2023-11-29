@@ -1,17 +1,21 @@
-var bodyColors = {
-    backgroundColor: document.querySelector("body").style.backgroundColor ,
-    fontColor: document.querySelector("body").style.color,
+var BodyColors = {
+  setColor: function (color) {
+    document.querySelector("body").style.color = color;
+  },
+  setBackgroundColor: function (color) {
+    document.querySelector("body").style.backgroundColor = color;
+  },
 };
 
 function dayNightHandler(self) {
   var target = document.querySelector("body");
   if (self.value === "Night") {
-    target.style.backgroundColor = "black";
-    target.style.color= "white";
+    BodyColors.setBackgroundColor("black");
+    BodyColors.setColor("white");
     self.value = "Day";
   } else if (self.value === "Day") {
-    target.style.backgroundColor = "white";
-    target.style.color = "black";
+    BodyColors.setBackgroundColor("white");
+    BodyColors.setColor("black");
     self.value = "Night";
   }
 }
