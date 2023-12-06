@@ -4,16 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-hello',
   standalone: true,
   imports: [],
-  // templateUrl: './hello.component.html',
-  template: `
-    <h2>안녕하세요{{ name }}</h2>
-    <input type="text" #inputYourName />
-    <button (click)="setName(inputYourName.value)">등록</button>
-  `,
-  styles: [``],
+  templateUrl: './hello.component.html',
+  styleUrl:`./hello.component.scss`,
+  
 })
 export class HelloComponent {
   name!: string;
+
   setName(name: string) {
     this.name = name;
   }
