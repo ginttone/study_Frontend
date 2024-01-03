@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
 import App from './App';
+import Header from './layouts/Header';
+import Dashborad from './views/Dashboard';
+import Sidebar from './layouts/Sidebar';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,12 +19,24 @@ root.render(
    * 4. 주로 동적인 페이지에서 사용한다. 
    */
   <BrowserRouter>
-  {/* <Routes>는 여러 Route를 감싸 그 중 규칙이 일치하는 라우트 단 하나만을 렌더링 시켜주는 역할을 한다. */}
+  {/** <Routes> 
+   * 여러 Route를 감싸 그 중 규칙이 일치하는 라우트 단 하나만을 렌더링 시켜주는 역할을 한다.
+   * a href 테그 같은 것이다.*/}
+    <div>
+      <Link to ="/first">첫번째</Link>
+      &nbsp;
+      <Link to ="/second">두번째</Link>
+      &nbsp;
+      <Link to ="/third">세번째</Link>
+    </div>
     <Routes>
       {/* <Route>는 path 속성에 경로, element 속성에는 컴포넌트를 넣어준다. 
       여러 라우팅을 매칭하고 싶은 경우 URL뒤에 *를 사용하면 된다. */}
-      <Route path="/RAP/*" element={<App/>}/>
-      <Route path="*" element={<Navigate to="/RAP/Main" replace/>}/>
+      {/* <Route path="/RAP/*" element={<App/>}/>
+      <Route path="*" element={<Navigate to="/RAP/Main" replace/>}/> */}
+      <Route path="/first" component={Header}/>
+      <Route path="/second" component={Dashborad}/>
+      <Route path="/third" component={Sidebar}/>
     </Routes>
   </BrowserRouter>
 );

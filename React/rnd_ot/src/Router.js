@@ -19,9 +19,9 @@ const Router = [
     path: "/",
     element: <Fulllayout />,
     children: [
-      { path: "/", element: <Navigate to="/Main" /> },
-      { path: "/header", exact: true, element: <Navigate to="/header" /> },
-      { path: "/sidebar", exact: true, element: <Navigate to="/sidebar" /> },
+      { path: "/", element: <Navigate to="/Header" /> },
+      { path: "/Header", exact: true, element: <Header/> },
+      { path: "/Sidebar", exact: true, element: <Sidebar/> },
     ],
   },
 ];
