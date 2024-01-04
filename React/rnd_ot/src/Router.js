@@ -1,29 +1,29 @@
-import { lazy } from "react";
-import { Navigate } from "react-router-dom";
-import React from "react";
-
-/** React.lazy
- * 컴포넌트를 동적으로 불러오기 위해 사용한다.
- * 동적 가져오기를 사용해 구성요소 수준에서 React 애플리케이션을 쉽게 코드 분할 할 수 있다.
+/** Router.js
+ * 각 path에 맞는 element 를 매칭해서 내보내는 역할을 한다.
+ * 각 페이지에서 보여줄 path와 element, 중첩라우팅을 위한 children을 적는다.
+ * 형태는 배열안에 담긴 객체 형태로 export 한다.
  */
+import React from "react";
+import { createBrowserRouter , Navigate} from "react-router-dom";
+/* 최상위 컴포넌트 import */
+import App from "./App";
+/* 라우팅 하고싶은 각각의 페이지 import */
+import Notfound from "./layouts/Main";
+import Dashboard from "./views/Dashboard";
+import Application from "./views/Application";
 
-/**** Layouts ****/
-const Fulllayout = lazy(() => import("./layouts/Main.js"));
-
-/**** Pages ****/
-const Header = lazy(() => import("./layouts/Header.js"));
-const Sidebar = lazy(() => import("./layouts/Sidebar.js"));
-
-const Router = [
+/**  */
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Fulllayout />,
+    element: <App />,
+    errorElement: <Notfound />,
     children: [
-      { path: "/", element: <Navigate to="/Header" /> },
-      { path: "/Header", exact: true, element: <Header/> },
-      { path: "/Sidebar", exact: true, element: <Sidebar/> },
+      { path: "/", element: <Navigate to="/dashboard" /> },
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/applicartion", element: <Application /> },
     ],
   },
-];
+]);
 
-export default Router;
+export default router;

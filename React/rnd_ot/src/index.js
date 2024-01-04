@@ -1,42 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
-import App from './App';
-import Header from './layouts/Header';
-import Dashborad from './views/Dashboard';
-import Sidebar from './layouts/Sidebar';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from './Router.js';
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  /** <BroserRouter>
-   * 1. 새로고침 시 해당 RUL을 바탕으로 페이지를 새로이 불러온다. 
-   * 2. <Link>를 통해 to 속성에 이동할 경로를 추가하여 이동한다.
-   *    단순히 주소만 바꿔주며 컴포넌트를 렌더링하는 역할을 하기에 새로고침을 하게되면
-   *    해당 페이지를 못찾아 에러가 발생한다. 
-   * 3. HTML5 History API를 사용한다.
-   * 4. 주로 동적인 페이지에서 사용한다. 
-   */
-  <BrowserRouter>
-  {/** <Routes> 
-   * 여러 Route를 감싸 그 중 규칙이 일치하는 라우트 단 하나만을 렌더링 시켜주는 역할을 한다.
-   * a href 테그 같은 것이다.*/}
-    <div>
-      <Link to ="/first">첫번째</Link>
-      &nbsp;
-      <Link to ="/second">두번째</Link>
-      &nbsp;
-      <Link to ="/third">세번째</Link>
-    </div>
-    <Routes>
-      {/* <Route>는 path 속성에 경로, element 속성에는 컴포넌트를 넣어준다. 
-      여러 라우팅을 매칭하고 싶은 경우 URL뒤에 *를 사용하면 된다. */}
-      {/* <Route path="/RAP/*" element={<App/>}/>
-      <Route path="*" element={<Navigate to="/RAP/Main" replace/>}/> */}
-      <Route path="/first" component={Header}/>
-      <Route path="/second" component={Dashborad}/>
-      <Route path="/third" component={Sidebar}/>
-    </Routes>
-  </BrowserRouter>
+  // <BrowserRouter>
+  // {/** <Routes> **
+  //  * 기존 react-router의 Swich가 V6에서는 이름이 Routes로 변경되었다.  
+  //  * 여러개의 Route를 감싸는데 사용하고 현재 URL에 일치하는 첫번째 Route 또는 Redirect만 렌더링 한다. 
+  //  * 즉, Route로 생성된 자식컴포넌트 중 매칭되는 첫번째 Route를 렌더링하여 화면에 노출시키기 때문에 Routes내의 Route순서가 중요하다.
+  // */}
+  //   <Routes>
+  //     <Route path="/" element={<App/>} />  
+  //     <Route path="*" element={<Navigate to="/main/tracking" replace/>} />
+  //   </Routes>
+  // </BrowserRouter>
+
+  <RouterProvider router={router}/>
 );
