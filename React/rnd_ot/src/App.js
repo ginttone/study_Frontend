@@ -47,20 +47,61 @@ function Nav(props) {
   );
 }
 
-function Board(props) { 
-
+function Board(props) {
   return (
     <div>
       <h3>{props.grpName}</h3>
       &nbsp;
-      <div>Number of People : <span>{props.memCnt}</span></div>
-      <div>Member : <span>{props.member}</span></div>
+      <div>
+        Number of People : <span>{props.memCnt}</span>
+      </div>
+      <div>
+        Member : <span>{props.member}</span>
+      </div>
     </div>
   );
 }
 
+function ButtonGroup(props) {
+  let items = [];
+
+  for (let i = 0; i < props.btnMode.length; i++) {
+    let item = props.btnMode[i];
+
+    items.push(
+      <button
+        key={item.id}
+        id={item.id}
+        onClick={(event) => {
+          event.preventDefault();
+          props.onChangeMode(item.id);
+        }}
+      >
+        {item.id}
+      </button>
+    );
+  }
+
+  return <div className="ButtonGrp">{items}</div>;
+}
+
+function ContentBox(props) {
+  return (
+    <>
+      <label>Group Name : </label>
+      <input type="text"></input>
+      <br />
+      <label>Number of People : </label>
+      <input type="number"></input>
+      <br />
+      <label>Member : </label>
+      <input type="textarea"></input>
+    </>
+  );
+}
+
 export default function App() {
-  const [mode, setMode] = useState("WELCOME");
+  const [mode, setMode] = useState("HOME");
   const [id, setId] = useState(null);
   const [topics, setTopics] = useState([
     {
@@ -84,9 +125,30 @@ export default function App() {
   ]);
 
   let content = null;
+  let contextControl = null;
 
-  if (mode === "WELCOME") {
-    console.log("home");
+  let btnMode = [
+    { id: "CREATE", flag: true },
+    { id: "UPDATE", flag: true },
+    { id: "DELETE", flag: true },
+  ];
+
+  if (mode === "HOME") {
+    content = <Board grpName={"Home"} memCnt={0} member={"null"} />;
+    contextControl = (
+      <>
+        <a
+          class="btn"
+          href="/create"
+          onClick={(e) => {
+            e.preventDefault();
+            setMode("CREATE");
+          }}
+        >
+          <ContentBox/>
+        </a>
+      </>
+    );
   } else if (mode === "READ") {
     let grpName,
       memCnt,
@@ -100,6 +162,7 @@ export default function App() {
     }
 
     content = <Board grpName={grpName} memCnt={memCnt} member={member} />;
+    // contextControl =
   }
 
   return (
@@ -108,9 +171,9 @@ export default function App() {
         <Header
           title="Personal Info."
           onChangeMode={() => {
-            setMode("WELCOME");
+            setMode("HOME");
           }}
-        ></Header>
+        />
 
         <Nav
           topics={topics}
@@ -120,50 +183,18 @@ export default function App() {
           }}
         />
 
-        <div className="ButtonGrp">
-          <button
-            id="btnCrt"
-            onClick={(event) => {
-              event.preventDefault();
-              setMode("CREATE");
-            }}
-          >
-            Create
-          </button>
-          <button
-            id="btnUpd"
-            onClick={(event) => {
-              event.preventDefault();
-              setMode("UPDATE");
-            }}
-          >
-            Update
-          </button>
-          <button
-            id="btnDel"
-            onClick={(event) => {
-              event.preventDefault();
-              setMode("DELETE");
-            }}
-          >
-            Delete
-          </button>
-        </div>
+        <ButtonGroup
+          btnMode={btnMode}
+          onChangeMode={(_id) => {
+            setMode(_id);
+          }}
+        />
 
-        <div className="ContentBox">
-          <label>Group Name : </label>
-          <input type="text"></input>
-          <br />
-          <label>Number of People : </label>
-          <input type="number"></input>
-          <br />
-          <label>Member : </label>
-          <input type="textarea"></input>
-        </div>
+        <div className="ContentBox">{contextControl}</div>
 
-        <div className="ButtonGrp">
+        {/* <div className="ButtonGrp">
           <button id="btnAdd">Add</button>
-        </div>
+        </div> */}
       </div>
 
       <div className="RigthSec">{content}</div>
