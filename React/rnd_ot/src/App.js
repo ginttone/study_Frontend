@@ -101,7 +101,7 @@ function ContentBox(props) {
 }
 
 export default function App() {
-  const [mode, setMode] = useState("HOME");
+  const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
   const [topics, setTopics] = useState([
     {
@@ -133,22 +133,8 @@ export default function App() {
     { id: "DELETE", flag: true },
   ];
 
-  if (mode === "HOME") {
-    content = <Board grpName={"Home"} memCnt={0} member={"null"} />;
-    contextControl = (
-      <>
-        <a
-          class="btn"
-          href="/create"
-          onClick={(e) => {
-            e.preventDefault();
-            setMode("CREATE");
-          }}
-        >
-          <ContentBox />
-        </a>
-      </>
-    );
+  if (mode === "WELCOME") {
+    content = <Board grpName={"WELCOME"} memCnt={0} member={"null"} />;
   } else if (mode === "READ") {
     let grpName,
       memCnt,
@@ -162,7 +148,38 @@ export default function App() {
     }
 
     content = <Board grpName={grpName} memCnt={memCnt} member={member} />;
-    // contextControl =
+    contextControl = (
+      <>
+        <a
+          className="btn"
+          href="/read"
+          onClick={(e) => {
+            e.preventDefault();
+            setMode("READ");
+            console.log("read---");
+          }}
+        >
+          <ContentBox />
+        </a>
+      </>
+    );
+  }else if(mode==="CREATE"){
+
+    contextControl = (
+      <>
+        <a
+          className="btn"
+          href="/create"
+          onClick={(e) => {
+            e.preventDefault();
+            setMode("CREATE");
+            console.log("create---");
+          }}
+        >
+          <ContentBox />
+        </a>
+      </>
+    );
   }
 
   return (
@@ -171,7 +188,7 @@ export default function App() {
         <Header
           title="Personal Info."
           onChangeMode={() => {
-            setMode("HOME");
+            setMode("WELCOME");
           }}
         />
 
