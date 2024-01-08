@@ -145,7 +145,7 @@ export default function App() {
             setMode("CREATE");
           }}
         >
-          <ContentBox/>
+          <ContentBox />
         </a>
       </>
     );
