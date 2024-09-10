@@ -1,0 +1,67 @@
+* {
+  font-family: "Jua", sans-serif;
+}
+
+/* 전체 배경과 텍스트 스타일 지정 */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 연하장 스타일 */
+#postcard {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 30px;
+}
+
+.postcard-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./imgs/background.jpg");
+  background-size: cover;
+  border-radius: 30px;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.opened {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+/* 텍스트 스타일 */
+#msg-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+}
+
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #634b29;
+}
+
+.p-message {
+  width: 65%;
+  font-size: 23px;
+  word-wrap: break-word;
+  margin: 0 auto;
+}
+
+.p-name {
+  text-align: end;
+  padding-right: 80px;
+}
